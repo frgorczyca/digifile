@@ -1,7 +1,7 @@
 const pool = require('../dbconfig')
 
 function createCase(request, response) {    
-    pool.query('INSERT INTO cases VALUES (nextval(\'cases_sequence\'), $1, $2, $3) RETURNING *;', [request.body.caseStatus, request.body.departmentId, request.body.judgeId ], (error, results) => {
+    pool.query('INSERT INTO cases VALUES (nextval(\'cases_sequence\'), $1, $2, $3, $4) RETURNING *;', [request.body.caseStatus, request.body.departmentId, request.body.judgeId,  request.body.signature], (error, results) => {
         if (error) {
           throw error
         }
