@@ -1,6 +1,5 @@
 const express = require('express')
-const getDepartment = require('./controllers/departmentController')
-const { createCase, getCase, updateCase } = require('./controllers/caseController')
+const { createCase, getCase, updateCase, getDocumentsForCase } = require('./controllers/caseController')
 const getCasesForDepartment = require('./controllers/departmentController')
 const getCasesForJudge = require('./controllers/judgesController')
 
@@ -15,6 +14,7 @@ app.get('/', (req, res) => {
 
 app.get('/cases/:caseId', getCase)
 app.put('/cases/:caseId', updateCase)
+app.get('/cases/:caseId/documents', getDocumentsForCase)
 app.post('/cases', createCase)
 
 app.get('/departments/:departureId/cases', getCasesForDepartment)
