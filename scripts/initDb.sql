@@ -5,5 +5,5 @@ CREATE TABLE judges (id int, department_id int, full_name varchar);
 
 CREATE SEQUENCE departments_sequence START 1;
 CREATE SEQUENCE judges_sequence START 1;
-CREATE SEQUENCE departments_sequence START 1;
-CREATE SEQUENCE judges_sequence START 1;
+CREATE SEQUENCE documents_sequence START 1;
+CREATE SEQUENCE cases_sequence START 1;
