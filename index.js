@@ -1,5 +1,6 @@
 const express = require('express')
 const { createCase, getCase, updateCase, getDocumentsForCase } = require('./controllers/caseController')
+const { getDocument, createDocument } = require('./controllers/documentController')
 const getCasesForDepartment = require('./controllers/departmentController')
 const getCasesForJudge = require('./controllers/judgesController')
 
@@ -11,6 +12,9 @@ app.use(express.json())
 app.get('/', (req, res) => {
     res.send('witaj')
 })
+
+app.get('/documents/:documentId', getDocument)
+app.post('/documents', createCase)
 
 app.get('/cases/:caseId', getCase)
 app.put('/cases/:caseId', updateCase)
