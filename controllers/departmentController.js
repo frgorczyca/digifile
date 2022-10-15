@@ -1,7 +1,7 @@
 const pool = require('../dbconfig')
 
-function getDepartment(request, response) {
-    pool.query('SELECT * FROM departments', (error, results) => {
+function getCasesForDepartment(request, response) {
+    pool.query('SELECT * FROM cases WHERE department_id = ($1)', [request.params.departureId], (error, results) => {
         if (error) {
             throw error
         }
@@ -9,4 +9,4 @@ function getDepartment(request, response) {
     })
 }
 
-module.exports = getDepartment
+module.exports = getCasesForDepartment
