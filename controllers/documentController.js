@@ -1,7 +1,7 @@
 const pool = require('../dbconfig')
 
 function getDocument(request, response) {
-    pool.query(`SELECT * FROM documents WHERE documents.id = $1`, [request.params.documents], (error, results) => {
+    pool.query(`SELECT * FROM documents WHERE documents.id = $1`, [request.params.documentId], (error, results) => {
         if (error) {
             throw error
         }
@@ -10,11 +10,11 @@ function getDocument(request, response) {
 }
 
 function createDocument(request, response) {    
-    pool.query('INSERT INTO documents VALUES ($1, $2, $3, $4) RETURNING *;', [request.body.caseId, Date.now() , request.body.sender,  request.body.description, request.body.rawData], (error, results) => {
+    pool.query('INSERT INTO documents (case_id, received_on, sender, description, raw_data) VALUES ($1, NOW(), $2, $3, $4) RETURNING *;', [request.body.caseId, request.body.sender,  request.body.description, request.body.rawData], (error, results) => {
         if (error) {
           throw error
         }
-        response.status(201).send(`${results.rows[0].id}`)
+        response.status(201).send(`${results.rows[0]}`)
       })
 }
 

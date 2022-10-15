@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/documents/:documentId', getDocument)
-app.post('/documents', createCase)
+app.post('/documents', createDocument)
 
 app.get('/cases/:caseId', getCase)
 app.put('/cases/:caseId', updateCase)
