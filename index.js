@@ -3,6 +3,7 @@ const { createCase, getCase, updateCase, getDocumentsForCase } = require('./cont
 const { getDocument, createDocument } = require('./controllers/documentController')
 const getCasesForDepartment = require('./controllers/departmentController')
 const getCasesForJudge = require('./controllers/judgesController')
+const GetMetaData = require('./controllers/readmetaController')
 
 const app = express()
 const port = 3000
@@ -12,6 +13,9 @@ app.use(express.json())
 app.get('/', (req, res) => {
     res.send('witaj')
 })
+
+app.get('/readmeta', GetMetaData)
+
 
 app.get('/documents/:documentId', getDocument)
 app.post('/documents', createDocument)
