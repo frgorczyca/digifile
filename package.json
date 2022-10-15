@@ -1,0 +1,19 @@
+{
+  "name": "digifile",
+  "version": "1.0.0",
+  "description": "hack4law projectt",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frgorczyca/digifile.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/frgorczyca/digifile/issues"
+  },
+  "homepage": "https://github.com/frgorczyca/digifile#readme"
+}
