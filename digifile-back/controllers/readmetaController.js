@@ -11,7 +11,9 @@ async function GetMetaData(request, response) {
             throw error
         }
 
-        const pngPages = await pdfToPng.pdfToPng(request.body.rawData, // The function accepts PDF file path or a Buffer
+        console.log(request.files["File"].data)
+
+        const pngPages = await pdfToPng.pdfToPng(request.files["File"].data, // The function accepts PDF file path or a Buffer
             {
                 disableFontFace: false, // When `false`, fonts will be rendered using a built-in font renderer that constructs the glyphs with primitive path commands. Default value is true.
                 useSystemFonts: false, // When `true`, fonts that aren't embedded in the PDF document will fallback to a system font. Default value is false.
@@ -60,7 +62,7 @@ async function GetMetaData(request, response) {
             fs.rmSync('eng.traineddata')
             fs.rmSync('osd.traineddata')
 
-            response.send(bestName)
+            response.send({ name: bestName})
         }).catch(err => {
             console.log(err);
             response.status(400).send()

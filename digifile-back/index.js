@@ -4,18 +4,20 @@ const { getDocument, createDocument } = require('./controllers/documentControlle
 const getCasesForDepartment = require('./controllers/departmentController')
 const getCasesForJudge = require('./controllers/judgesController')
 const GetMetaData = require('./controllers/readmetaController')
+const fileUpload = require('express-fileupload');
 
 const app = express()
 const port = 3001
 
-app.use(express.json())
 
-app.get('/', (req, res) => {
+app.use(express.json());
+app.use(fileUpload());
+
+app.get('/hello', (req, res) => {
     res.send('witaj')
 })
 
-app.get('/readmeta', GetMetaData)
-
+app.post('/readmeta', GetMetaData)
 
 app.get('/documents/:documentId', getDocument)
 app.post('/documents', createDocument)
